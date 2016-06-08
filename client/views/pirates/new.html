@@ -1,0 +1,21 @@
+<h2>Add a Pirate</h2>
+<form ng-submit="vm.addPirate(vm.pirate)">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="What is your pirate's name?" ng-model="vm.pirate.name">
+  </div>
+  <div class="form-group">
+    <label for="Poison">Poison</label>
+    <input type="text" class="form-control" id="Poison" placeholder="What is your pirate's Poison?" ng-model="vm.pirate.poison">
+  </div>
+  <div class="form-group">
+    <label for="Accessory">Accessory</label>
+    <input type="text" class="form-control" id="Accessory" placeholder="What is your pirate's Accessory?" ng-model="vm.pirate.accessory">
+  </div>
+  <div class="form-group">
+    <label for="img_url">Image</label>
+    <input type="text" class="form-control" id="img_url" placeholder="What does your pirate look like?" ng-model="vm.pirate.img_url">
+  </div>
+  <button type="submit">Add Pirate</button>
+  <a href="/pirates"> Return Home</a>
+</form>
