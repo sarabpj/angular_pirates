@@ -5,6 +5,8 @@
         scope:{
           pirate: '<'
         },
+        controller: 'ShowPirateController',
+        controllerAs: 'vm',
         templateUrl: '../views/pirates/show.html'
       }
     })

@@ -3,27 +3,40 @@
     .module('piratesApp')
     .controller('PiratesController', PiratesController)
     .controller('NewPirateController', NewPirateController)
+    .controller('ShowPirateController', ShowPirateController)
 
-    function PiratesController($http){
+    function PiratesController(PirateService){
       var vm = this;
-      $http.get('/api/pirates').then(function(res){
-          vm.pirates = res.data
+      PirateService.getPirates().then(function(res){
+        vm.pirates = res.data
       })
     };
 
-    function NewPirateController($http, $location){
+    function NewPirateController(PirateService, $location){
       var vm = this;
       vm.pirate ={};
 
       vm.addPirate = function(newPirate){
         var req = {pirate: newPirate};
-        $http.post('/api/pirates', req).then(function(res){
+         PirateService.createPirate(req).then(function(res){
           $location.path('/pirates')
         })
       }
     };
 
-    PiratesController.$inject=['$http']
-    NewPirateController.$inject=['$http', '$location']
+    function ShowPirateController(PirateService, $route){
+      var vm = this;
+      vm.removePirate = function(id){
+        PirateService.deletePirate(id).then(function(){
+          //when going to a new location you need to use $location.path('/pirates')
+          //when needing to refresh the page after a delete or update uses $route.reload
+            $route.reload();
+        });
+      }
+    }
+
+    PiratesController.$inject=['PirateService']
+    NewPirateController.$inject=['PirateService', '$location']
+    ShowPirateController.$inject=['PirateService', '$route']
 })()
 
