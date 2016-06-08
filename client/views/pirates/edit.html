@@ -1,0 +1,21 @@
+<h2>Edit #{{vm.pirate.id}}</h2>
+<form ng-submit="vm.editPirate(vm.pirate)">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" ng-model="vm.pirate.name">
+  </div>
+  <div class="form-group">
+    <label for="Poison">Poison</label>
+    <input type="text" class="form-control" id="Poison"  ng-model="vm.pirate.poison">
+  </div>
+  <div class="form-group">
+    <label for="Accessory">Accessory</label>
+    <input type="text" class="form-control" id="Accessory"  ng-model="vm.pirate.accessory">
+  </div>
+  <div class="form-group">
+    <label for="img_url">Image</label>
+    <input type="text" class="form-control" id="img_url"  ng-model="vm.pirate.img_url">
+  </div>
+  <button type="submit">Update Pirate</button>
+  <a href="/pirates"> Return Home</a>
+</form>

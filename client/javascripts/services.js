@@ -16,15 +16,15 @@
       }
 
       this.getPirate =function(id){
-        return $http.post(BASE_URL + '/' + id)
+        return $http.get(BASE_URL + '/' + id)
       }
 
       this.deletePirate = function(id){
         return $http.delete(BASE_URL + '/' + id)
       }
       // two arguments used because you need the updated pirate data sent to server
-      this.updatePirate = function(pirate){
-        return $http.put(BASE_URL + '/' + pirate.id, pirate /*on the server, req.body.pirate*/)
+      this.updatePirate = function(data){
+        return $http.put(BASE_URL + '/' + data.pirate.id, data /*on the server, req.body.pirate*/)
       }
     }
 

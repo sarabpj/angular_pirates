@@ -4,6 +4,7 @@
     .controller('PiratesController', PiratesController)
     .controller('NewPirateController', NewPirateController)
     .controller('ShowPirateController', ShowPirateController)
+    .controller('EditPirateController', EditPirateController)
 
     function PiratesController(PirateService){
       var vm = this;
@@ -35,8 +36,25 @@
       }
     }
 
+    function EditPirateController(PirateService, $routeParams, $location){
+       var vm = this
+
+      PirateService.getPirate($routeParams.id).then(function(res){
+        vm.pirate = res.data
+        if(!vm.pirate) $location.path('/pirates')
+      })
+
+       vm.editPirate = function(pirate){
+        var req = {pirate: pirate}
+         PirateService.updatePirate(req).then(function(res){
+          $location.path('/pirates')
+         })
+       }
+    }
+    //make sure the order you inject is the same order as your function 
     PiratesController.$inject=['PirateService']
     NewPirateController.$inject=['PirateService', '$location']
     ShowPirateController.$inject=['PirateService', '$route']
+    EditPirateController.$inject =['PirateService', '$routeParams', '$location']
 })()
 

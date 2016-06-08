@@ -26,12 +26,11 @@ router.get('/:id', function(req,res){
   })
 })
 
-
+ 
 router.put('/:id', function(req,res){
   // console.log(req.body.pirate)
   knex('pirates').where({id: +req.params.id}).update(req.body.pirate).returning('*').then(function(pirate){
-  console.log(pirate)  
-    res.send(pirate);
+    res.send(req.body.pirate);
   }).catch(function(err){
     console.log(err)
   })

@@ -1,13 +1,13 @@
 (function(){
   angular.module('piratesApp')
-    .directive('gsPirateShow', function (){
-      return {
-        scope:{
+    .component('gsPirateShow', {
+        //with bindings everything by default is bound to the controller
+        bindings:{
           pirate: '<'
         },
         controller: 'ShowPirateController',
         controllerAs: 'vm',
         templateUrl: '../views/pirates/show.html'
-      }
-    })
+      })
+    
 })()
